@@ -117,6 +117,7 @@ func (as *Server) ImportSite(w http.ResponseWriter, r *http.Request) {
 	restrictedDialer := dialer.Dialer()
 	tr := &http.Transport{
 		DialContext: restrictedDialer.DialContext,
+		Proxy:       http.ProxyFromEnvironment,
 		TLSClientConfig: &tls.Config{
 			InsecureSkipVerify: true,
 		},
